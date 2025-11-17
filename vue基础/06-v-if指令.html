@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="切换显示" @click="toggleIsShow">
+        <!-- v-if操纵DOM树 -->
+        <p v-if="isShow">hahaha</p>
+        <!-- v-show操纵样式，频繁切换用v-show -->
+        <p v-show="isShow">hahaha</p>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: { isShow: false },
+            methods: {
+                toggleIsShow: function () {
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

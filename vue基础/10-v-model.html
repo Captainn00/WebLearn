@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="message" @keyup.enter="getM">
+        <input type="button" value="修改message" @click="setM">
+        <h4>{{message}}</h4>
+    </div>
+    <script>
+        // 获取和设置表单元素的值（双向数据绑定）
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: "wa"
+            },
+            methods: {
+                getM: function () {
+                    alert(this.message)
+                },
+                setM: function () {
+                    this.message = "oo"
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

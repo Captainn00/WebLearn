@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="v-on指令" v-on:click="doIt">
+        <!-- 简写 -->
+        <input type="button" value="v-on指令简写" @click="doIt">
+        <!-- 双击事件 -->
+        <input type="button" value="双击事件" @dblclick="doIt">
+        <!-- this关键字 -->
+        <h3 @click="changeFood" v-html="food"></h3>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                food: '火锅'
+            },
+            methods: {
+                doIt: function () {
+                    alert("doIt")
+                },
+                changeFood: function () {
+                    this.food += '好好吃'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            width: 1226px;
+            height: 285px;
+            background-color: #d27272;
+            margin: 0 auto;
+        }
+
+        .box li {
+            width: 296px;
+            height: 285px;
+            background-color: #50d2e9;
+            float: left;
+            margin-right: 14px;
+        }
+        /* 这里必须写.box .last，要注意权重的问题，才能层叠 */
+        .box .last {
+            margin-right: 0;
+        }
+    </style>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li class="last">4</li>
+    </ul>
+</body>
+
+</html>

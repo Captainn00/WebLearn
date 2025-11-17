@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .clearfix:after {
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    /* .clearfix {
+        *zoom: 1;
+    } */
+
+
+    .box {
+
+        border: solid #7a8bde;
+    }
+
+    .box .yi {
+        width: 100px;
+        height: 100px;
+        background-color: #de7a7a;
+        float: left;
+    }
+
+    .box .er {
+        width: 100px;
+        height: 100px;
+        background-color: #7a8bde;
+        float: left;
+
+    }
+
+    .san {
+        height: 100px;
+        background-color: #7df69b;
+    }
+</style>
+
+<body>
+    <!-- 
+    :after 方式是额外标签法的升级版，也是给父元素添加
+    -->
+    <div class="box clearfix">
+        <div class="yi">一</div>
+        <div class="er">er</div>
+    </div>
+    <div class="san">三</div>
+</body>
+
+</html>

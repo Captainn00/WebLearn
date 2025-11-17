@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+    浮动元素会具有行内块元素的特性
+    任何元素都可以浮动，不管原先是什么模式的元素，添加浮动之后具有行内块元素相似的特性
+    1.如果块级盒子没有设置宽度，默认宽度和父级一样宽，但是添加浮动后，他的大小根据内容来决定
+    2.浮动的盒子中间是没有缝隙的，是紧挨在一起的
+    3.行内元素同理
+    */
+    span,
+    div {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background-color: #f68484;
+    }
+
+    p {
+        float: right;
+        background-color: #e85bf0;
+        height: 300px;
+    }
+</style>
+
+<body>
+    <span>1</span>
+    <span>2</span>
+    <div>3</div>
+    <p>pppppppppppppppp</p>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+<html>包含关系
+	<head></head>并列关系
+	<body></body>
+</html>双标签
+<br />单标签

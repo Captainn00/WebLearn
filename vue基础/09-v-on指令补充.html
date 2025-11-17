@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click="doIt(1,2)">
+        <input type="text" @keyup.enter="hai">
+    </div>
+    <script>
+        // 传自定义参数，事件修饰符
+        let app = new Vue({
+            el: '#app',
+            methods: {
+                doIt: function (p1, p2) {
+                    console.log(p1);
+                    console.log(p2);
+
+                },
+                hai: function () {
+                    alert("吃了没")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

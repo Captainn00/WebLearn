@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        /* 
+        h-shadow        必需，水平阴影的位置，允许负值
+        v-shadow        必需，垂直阴影的位置，允许负值
+        blur            模糊距离
+        spread          阴影的尺寸
+        color           阴影颜色
+        inset           将外部阴影（outset）改为内部阴影,默认是outset，但不能写outset
+        */
+
+        width: 200px;
+        height: 100px;
+        background-color: #de9393;
+
+
+    }
+
+    /* 鼠标经过时才有影子 */
+    div:hover {
+        box-shadow: 10px 10px 10px -3px rgb(0, 0, 0, .3);
+    }
+</style>
+
+<body>
+    <div></div>
+</body>
+
+</html>

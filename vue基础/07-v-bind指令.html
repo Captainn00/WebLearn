@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<style>
+    .active {
+        border: 1px solid red;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <img v-bind:src="imgSrc" v-bing:title="imgTitle+'!!'" alt="" @click="toggleActive">
+        <br>
+        <!-- 简写 -->
+        <!-- <img :src="imgSrc" :title="imgTitle+'!!'" alt="" @click="toggleActive" :class="isActive?'active':''"> -->
+        <img :src="imgSrc" :title="imgTitle+'!!'" alt="" @click="toggleActive" :class="{active:isActive}">
+    </div>
+    <script>
+        //v-bind设置元素属性
+        let app = new Vue({
+            el: '#app',
+            data: {
+                isActive: false,
+                imgTitle: "福福农场",
+                imgSrc: "../JS/imgs/水1.png"
+            },
+            methods: {
+                toggleActive: function () {
+                    this.isActive = !this.isActive
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

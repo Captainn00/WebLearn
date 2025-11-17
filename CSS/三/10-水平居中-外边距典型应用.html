@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+    外边距可以让块级盒子水平居中，但必须满足下面的条件：
+    1，盒子必须指定宽度
+    2. 盒子左右的外边距都设置为auto,一下三种写法都可以
+    margin-left: auto; margin-right: auto;
+    margin: auto;
+    margin: 0 auto;
+    注意：行内元素或者行内块元素水平居中给其父元素添加text-align:center;即可
+    */
+    .header {
+        width: 900px;
+        height: 200px;
+        margin: 0 auto;
+        background-color: #f7a0a0;
+    }
+</style>
+
+<body>
+    <div class="header"></div>
+</body>
+
+</html>

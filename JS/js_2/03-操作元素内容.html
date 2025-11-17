@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">我是内容</div>
+    <script>
+        /* 
+        对象.innerText 属性
+        显示纯文本，不解析标签
+        */
+
+        // 获取元素
+        const box = document.querySelector('.box')
+        // 修改文字内容  对象.innerText 属性
+        console.log(box.innerText);     //获取
+        box.innerText = '我是新内容'     //修改
+
+
+        /* 
+        对象.innerHTML 属性
+        解析标签，多标签建议使用模板字符
+        */
+        console.log(box.innerHTML);
+        box.innerHTML = '<strong>我是新内容</strong>'
+
+
+    </script>
+</body>
+
+</html>

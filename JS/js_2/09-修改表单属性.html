@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <input type="text" value="你好"> -->
+    <input type="checkbox">
+    <button>点击</button>
+    <button disabled>点击</button>
+
+    <script>
+        // 1.获取元素
+        const uname = document.querySelector('input')
+        // 2.获取值  获取表单里面的值value
+        console.log(uname.value);
+
+        // 3.在text和password之间切换
+        // uname.type = 'password'
+
+        // 1.获取元素
+        const ipt = document.querySelector('input')
+        // console.log(ipt.checked);   //false
+        ipt.checked = true
+
+        //
+        const button = document.querySelector('button')
+        // console.log(button.disabled);   //默认false，不禁用
+        button.disabled = true
+
+    </script>
+</body>
+
+</html>

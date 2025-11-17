@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .slider {
+        width: 560px;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: 320px;
+    }
+
+    .wrapper img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .footer {
+        height: 80px;
+        background-color: rgb(100, 67, 68);
+        padding: 12px 12px 0 12px;
+        position: relative;
+    }
+</style>
+
+<body>
+    <div class="slider">
+        <div class="wrapper">
+            <img src="../imgs/水1.png" alt="">
+        </div>
+        <div class="footer">
+            <p>第一张</p>
+            <ul class="indicator">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        //初始数据
+        const data = [
+            { url: '../imgs/水1.png', title: '第一张', color: 'pink' },
+            { url: '../imgs/水2.png', title: '第二张', color: 'blue' },
+            { url: '../imgs/水3.png', title: '第三张', color: 'purple' }
+        ]
+        // function getRandom(m, n) {
+        //     return Math.floor(Math.random(m - n + 1) + n)
+        // }sss
+        // 随机数
+        const random = parseInt(Math.random() * data.length)
+        console.log(random);
+
+        //获取对象
+        const img = document.querySelector('.wrapper img')
+        // 修改图片路径
+        console.log(data[random].url);
+        img.src = data[random].url
+        // 修改文字
+        const p = document.querySelector('.footer p')
+        p.innerHTML = data[random].title
+        // 修改背景颜色
+        const footer = document.querySelector('.footer')
+        footer.style.backgroundColor = data[random].color
+        // 小圆点、
+        const li = document.querySelector(`.indicator li:nth-child(${random + 1})`)
+        li.classList.add('active')
+    </script>
+</body>
+
+</html>

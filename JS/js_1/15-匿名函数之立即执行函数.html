@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 场景介绍：避免全局变量之间的污染
+        // 立即执行函数必须要加分号
+
+        let num = 10;
+        // 第一种写法 (function () {}) ();  -->第一个小括号是形参，第二个是实参
+        (function () {
+            let num = 10;
+            console.log(num);
+
+        })();
+
+        (function () {
+            let num = 20;
+            console.log(num);
+
+        })();
+        (function (x, y) {
+            console.log(x + y);
+
+        })(1, 2)
+        // 第二种写法  (function () {}());
+
+    </script>
+</body>
+
+</html>

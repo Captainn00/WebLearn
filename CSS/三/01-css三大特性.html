@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            color: blueviolet;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    1.层叠性
+    样式冲突遵循的原则是就近原则，哪个样式离结构近，就执行哪个样式
+    样式不冲突，不会层叠
+
+    2.继承性
+    子标签会继承父标签的某些样式，如文本颜色和字号
+        2.1行高的继承性
+        body{
+            font:12px/1.5 Microsoft YaHei;
+        }
+        行高可以不跟单位
+        如果子元素没有设置行高，则会继承父元素的行高1.5
+        此时子元素的行高为：1.5倍当前子元素文字大小
+
+    3.优先级
+    优先级最高！important
+    
+    div{
+        color:green!important;
+    }
+    继承的权重为0:
+        <a>链接 浏览器默认指定了一个样式(蓝色的，有下划线) 不会继承父亲样式
+
+    -->
+    <!-- 
+        优先级：
+            权重叠加：如果是复合选择器，则会有权重叠加，需要计算权重
+        -->
+    <div>
+        <p>
+            继承性
+        </p>
+    </div>
+</body>
+
+</html>

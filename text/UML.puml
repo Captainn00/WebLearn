@@ -1,0 +1,26 @@
+@startuml   
+
+class TextEditor {
+  - content: String
+  + write(text: String)
+  + createMemento(): TextMemento
+  + restoreMemento(memento: TextMemento)
+}
+
+class TextMemento {
+  - content: String
+  + getContent(): String
+}
+
+class HistoryManager {
+  - undoStack: Stack<TextMemento>
+  - redoStack: Stack<TextMemento>
+  + saveState(memento: TextMemento)
+  + undo(): TextMemento
+  + redo(): TextMemento
+}
+
+TextEditor --> TextMemento : creates >
+HistoryManager --> TextMemento : uses >
+
+@enduml

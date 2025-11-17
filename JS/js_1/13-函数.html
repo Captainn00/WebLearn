@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    span {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px soild pink;
+        margin: 2px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px pink;
+        background-color: rgba(255, 192, 203, .1);
+    }
+</style>
+
+<body>
+    <script>
+
+        // function shift99(start, end) {
+        //     for (let i = start; i <= end; i++) {
+        //         for (let j = 1; j <= i; j++) {
+        //             document.write(`<span>${j}×${i}=${i * j}</span>`)
+        //         }
+        //         document.write('<br>')
+        //     }
+        // }
+        // 默认值传参 针对不传参的情况
+        // 另一种避免方法 x=x||0  y=y||0
+        function shift99(start = 0, end = 0) {
+            for (let i = start; i <= end; i++) {
+                for (let j = 1; j <= i; j++) {
+                    document.write(`<span>${j}×${i}=${i * j}</span>`)
+                }
+                document.write('<br>')
+            }
+
+        }
+        shift99(1, 9)
+        // 变量的特殊情况：如果函数内部，变量没有声明，直接赋值，也会当全局变量看，但是强烈不推荐
+
+    </script>
+
+</body>
+
+</html>

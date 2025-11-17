@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        let 对象名={
+            属性名：属性值,
+            方法名：函数
+        }
+        let 对象名=new Object()
+        对象是一种数据类型
+        [无序]的数据的集合
+        可详细的描述某个事物
+        */
+        let obj = {
+            name: '甜菜',
+            address: '福福农场',
+            sihai: function () {
+                console.log('hai~');
+
+            }
+        }
+
+        // 打印
+        console.log(obj['name']);
+        console.log(obj.address);
+        obj.sihai()
+        // 新增
+        obj.time = '第四年'
+        console.log(obj);
+        // 删除
+        delete obj.time
+        console.log(obj);
+        console.log('-----------------');
+
+        // 遍历对象
+        for (let k in obj) {
+            // 带引号的属性名
+            // console.log(k);
+
+            console.log(obj[k]);
+
+
+        }
+
+    </script>
+</body>
+
+</html>
