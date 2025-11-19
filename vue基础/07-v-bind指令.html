@@ -12,12 +12,16 @@
 <style>
     .active {
         border: 1px solid red;
+        width: 300px;
     }
 </style>
 
 <body>
+    <!-- v-bind指令：设置元素属性
+      -->
     <div id="app">
-        <img v-bind:src="imgSrc" v-bing:title="imgTitle+'!!'" alt="" @click="toggleActive">
+        <img v-bind:src="imgSrc" v-bing:title="imgTitle+'!!'" @click="toggleActive" v-bind:class="{active:isActive}"
+            alt="">
         <br>
         <!-- 简写 -->
         <!-- <img :src="imgSrc" :title="imgTitle+'!!'" alt="" @click="toggleActive" :class="isActive?'active':''"> -->

@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <!-- v-on指令
+    作用：绑定事件
+    语法：
+    v-on:事件名="要执行的方法" 
+    -->
     <div id="app">
         <input type="button" value="v-on指令" v-on:click="doIt">
         <!-- 简写 -->
@@ -18,7 +23,8 @@
         <!-- 双击事件 -->
         <input type="button" value="双击事件" @dblclick="doIt">
         <!-- this关键字 -->
-        <h3 @click="changeFood" v-html="food"></h3>
+        <input type="button" @click="changeFood" v-html="food" value="changeFood">
+        <div v-html="food"></div></input>
     </div>
     <script>
         let app = new Vue({
@@ -31,7 +37,7 @@
                     alert("doIt")
                 },
                 changeFood: function () {
-                    this.food += '好好吃'
+                    this.food = '<div style="text-align: center;font-size: 20px;">火锅好好吃</div>'
                 }
             }
         })

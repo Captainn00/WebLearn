@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <!-- v-model
+     
+     作用：
+     1. 获取表单数据
+     2. 设置表单数据
+     3. 双向数据绑定
+ -->
     <div id="app">
         <input type="text" v-model="message" @keyup.enter="getM">
         <input type="button" value="修改message" @click="setM">

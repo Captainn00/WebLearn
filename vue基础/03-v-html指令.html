@@ -12,8 +12,8 @@
 
 <body>
     <div id="app">
-        <p v-html="content"></p>
-        <p v-text="content"></p>
+        <p v-html="content"></p><!-- 可以解析html标签 -->
+        <p v-text="content"></p><!-- 不能解析html标签 -->
     </div>
     <script>
         let app = new Vue({
