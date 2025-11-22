@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Microsoft YaHei", sans-serif;
+    }
+
+    body {
+        background-color: #f5f7fa;
+        padding: 20px;
+        color: #333;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    header {
+        background-color: #409eff;
+        color: white;
+        padding: 15px 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .search-panel {
+        padding: 20px;
+        border-bottom: 1px solid #ebeef5;
+    }
+
+    .search-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .form-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .form-item label {
+        margin-right: 8px;
+        white-space: nowrap;
+    }
+
+    input,
+    select,
+    button {
+        padding: 8px 12px;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    input:focus,
+    select:focus {
+        border-color: #409eff;
+    }
+
+    button {
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-query {
+        background-color: #409eff;
+        color: white;
+        border: none;
+    }
+
+    .btn-query:hover {
+        background-color: #66b1ff;
+    }
+
+    .btn-reset {
+        background-color: #f4f4f5;
+        color: #606266;
+        border: 1px solid #d3d4d6;
+    }
+
+    .btn-reset:hover {
+        color: #409eff;
+        border-color: #c6e2ff;
+        background-color: #ecf5ff;
+    }
+
+    .table-container {
+        padding: 0 20px 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        min-width: 900px;
+
+    }
+
+    th,
+    td {
+        padding: 2px 5px;
+        text-align: center;
+        border: 1px solid #ebeef5;
+
+    }
+
+    th {
+        background-color: #f5f7fa;
+        font-weight: 600;
+        color: #606266;
+
+    }
+
+    tr:hover {
+        background-color: #f5f7fa;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #e4e7ed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #909399;
+        font-size: 14px;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-edit {
+        background-color: #e6f7ff;
+        color: #1890ff;
+        border: 1px solid #91d5ff;
+    }
+
+    .btn-edit:hover {
+        background-color: #bae7ff;
+    }
+
+    .btn-delete {
+        background-color: #fff2f0;
+        color: #ff4d4f;
+        border: 1px solid #ffccc7;
+    }
+
+    .btn-delete:hover {
+        background-color: #ffccc7;
+    }
+</style>
+
+<body>
+    <!-- 
+    生命周期：创建、更新、销毁
+
+    生命周期的八个阶段：每触发一个阶段，会自动执行一个生命周期方法(钩子)
+    1. beforeCreate()  创建之前
+    2. created()  创建之后
+    3. beforeMount()  挂载之前
+    4. mounted()  挂载之后      ⭐⭐
+    5. beforeUpdate()  更新之前
+    6. updated()  更新之后
+    7. beforeDestroy()  销毁之前
+    8. destroyed()  销毁之后
+    -->
+
+    <div id="container">
+        <header>员工信息管理系统</header>
+
+        <div class="search-panel">
+            <div class="search-form">
+                <div class="form-item">
+                    <label>姓名：</label>
+                    <input type="text" placeholder="请输入姓名" v-model="searchForm.name">
+                </div>
+
+                <div class="form-item">
+                    <label>性别：</label>
+                    <select v-model="searchForm.gender">
+                        <option value="">请选择</option>
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                </div>
+
+                <div class="form-item">
+                    <label>职位：</label>
+                    <select v-model="searchForm.job">
+                        <option value="">请选择</option>
+                        <option value="1">班主任</option>
+                        <option value="2">讲师</option>
+                        <option value="3">学工主管</option>
+                    </select>
+                </div>
+
+                <button class="btn-query" v-on:click="search">查询</button>
+                <button class="btn-reset" v-on:click="resetForm">清空</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>姓名</th>
+                        <th>头像</th>
+                        <th>性别</th>
+                        <!-- <th>所属部门</th> -->
+                        <th>职位</th>
+                        <th>入职日期</th>
+                        <th>最后操作时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(e,index) in empList" :key="e.id">
+                        <td>{{index+1}}</td>
+                        <td>{{e.name}}</td>
+
+                        <!-- 插值表达式{{e.image}}不能出现在标签内部 -->
+                        <td>
+                            <img v-bind:src="e.image" :alt="e.name" class="avatar">
+                        </td>
+
+                        <td>
+                            <span v-if="e.gender=='1'">男</span>
+                            <span v-else-if="e.gender=='2'">女</span>
+                            <span v-else>未知</span>
+                        </td>
+                        <td>
+                            <span v-if="e.job=='1'">班主任</span>
+                            <span v-else-if="e.job=='2'">讲师</span>
+                            <span v-else-if="e.job=='3'">学工主管</span>
+                            <span v-else>其他</span>
+                        </td>
+                        <td>{{e.entrydate}}</td>
+                        <td>{{e.updatetime}}</td>
+                        <!-- <td>{{e.lastOperationTime}}</td> -->
+                        <td class="action-buttons">
+                            <button class="btn-edit" v-on:click="">编辑</button>
+                            <button class="btn-delete" v-on:click="">删除</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- https://web-server.itheima.net/emps/list?name=xxx&gender=xxx&job=xxx -->
+    <script type="module">
+        import { createApp } from 'https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            data() {
+                return {
+                    searchForm: {
+                        name: '',
+                        gender: '',
+                        job: ''
+                    },
+                    empList: []
+                }
+            },
+            methods: {
+                search() {
+                    console.log(this.searchForm)
+                    //发送Ajax请求,获取数据
+                    axios.get('https://web-server.itheima.net/emps/list', {
+                        params: this.searchForm
+                    }).then(res => {
+                        this.empList = res.data.data
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                },
+                resetForm() {
+                    this.searchForm = {
+                        name: '',
+                        gender: '',
+                        job: ''
+                    }
+                    this.search()
+                }
+
+            },
+            mounted() {
+                // 页面加载时自动获取数据
+                this.search()
+            }
+
+        }).mount('#container')
+    </script>
+</body>
+
+</html>

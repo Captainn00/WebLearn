@@ -27,13 +27,23 @@
                     let that = this
                     axios.get("https://unpkg.com/axios/dist/axios.min.js")
                         .then(function (response) {
-                            console.log(response);
+
                             that.data = response.data
+                            console.log(response);//先执行完再执行then，不方便维护也不利于阅读，可以使用async await来解决这个问题
                         }, function (err) {
                             console.log(err);
 
                         })
                 }
+
+                //可以通过async await让异步函数变成同步函数。assync就是来声明一个异步函数，await就是来等待一个异步函数执行完毕。
+                // async getContent() {
+                //     let response = await axios.get("https://unpkg.com/axios/dist/axios.min.js")
+                //     console.log(response);
+                //     this.data = response.data
+                // }
+
+
             }
         })
     </script>
